@@ -1,0 +1,19 @@
+{% extends "base_template.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<h2>Próximos eventos</h2>
+{% if eventos %}
+  <ul>
+  {% for e in eventos %}
+    <li>
+      {% if e.destacado %}⭐{% endif %}
+      <a href="{{ url_for('detalle_evento', slug=e.slug) }}">{{ e.titulo }}</a>
+      — {{ e.fecha }} {{ e.hora }} — {{ e.lugar }}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay eventos próximos.</p>
+{% endif %}
+{% endblock %}
+
